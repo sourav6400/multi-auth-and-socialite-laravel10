@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/googleLogin', [SocialiteController::class, 'googleLogin'])->name('googleLogin');
+Route::get('/auth/google/callback', [SocialiteController::class, 'googleHandle'])->name('googleHandle'); 
+// Route::get('/dashboard', [SocialiteController::class, 'googleHandle'])->name('googleHandle'); 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
